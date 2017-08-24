@@ -32,7 +32,7 @@ sudo chown root /etc/hosts
 
 #mysql db
 mysql -u root -p$rootp < sql_input
-echo '###########################################1'
+
 
 
 #create config
@@ -41,7 +41,7 @@ echo '###########################################1'
 sudo cp ngconf /etc/nginx/sites-available/$domaine
 sudo sed -i "s/domain_name/$domaine/g" /etc/nginx/sites-available/$domaine
 sudo ln -s /etc/nginx/sites-available/$domaine /etc/nginx/sites-enabled/
-echo '###########################################2'
+
 	
 if [[ $? -eq 0 ]]
 	then
@@ -53,7 +53,7 @@ if [[ $? -eq 0 ]]
 sudo systemctl reload nginx	
 #sudo apt-get update
 sudo systemctl restart php*
-echo '###########################################3'
+
 
 #get wordpress
 cd /tmp
@@ -62,16 +62,16 @@ tar xzvf latest.tar.gz >> log
 cp /tmp/wordpress/wp-config-sample.php /tmp/wordpress/wp-config.php
 sudo mkdir /var/www/$domaine
 sudo cp -a /tmp/wordpress/. /var/www/$domaine
-echo '###########################################4'
+
 
 
 #set ownerships
-sudo chown -R $i:www-data /var/www/html
-sudo find /var/www/html -type d -exec chmod g+s {} \;
-sudo chmod g+w /var/www/html/wp-content
-sudo chmod -R g+w /var/www/html/wp-content/themes
-sudo chmod -R g+w /var/www/html/wp-content/plugins
-echo '###########################################5'
+sudo chown -R $i:www-data /var/www/$domaine
+sudo find /var/www/$domaine -type d -exec chmod g+s {} \;
+sudo chmod g+w /var/www/$domaine/wp-content
+sudo chmod -R g+w /var/$domine/html/wp-content/themes
+sudo chmod -R g+w /var/$domaine/html/wp-content/plugins
+
 
 
 #modify wpconfig
