@@ -8,11 +8,13 @@
 <code>
 git clone https://github.com/P-Shreyas/rtassign.git
 </code>
-<br>
+<br><br>
 2. Run the script file
 <br>
 <code>
 sudo rtassign/assign.sh
 </code>
+<br>
+<br>
 <b>Assumptions</b>
 
