@@ -19,7 +19,7 @@ ver=$(php -r "echo phpversion();")
 ver=$(echo $ver | cut -c 1-3)
 sudo chown $i: /etc/php/$ver/fpm/php.ini
 sudo echo "cgi.fix_path=0" >> /etc/php/$ver/fpm/php.ini
-
+sudo chown root /etc/php/$ver/fpm/php.ini
 
 sudo systemctl restart php*
 
@@ -85,6 +85,6 @@ cd /var/www/$domaine
 	
 
 echo "dbname: wordpress"
-echo "username: wordpressuser"
-echo "password: password"
+echo "dbusername: wordpressuser"
+echo "dbpassword: password"
 echo "proceed to $domaine on your browser"
