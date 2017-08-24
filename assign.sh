@@ -59,8 +59,8 @@ sudo systemctl restart php*
 
 #get wordpress
 cd /tmp
-curl -O https://wordpress.org/latest.tar.gz
 echo "getting wordpress"
+curl -O https://wordpress.org/latest.tar.gz
 tar xzvf latest.tar.gz >> log
 cp /tmp/wordpress/wp-config-sample.php /tmp/wordpress/wp-config.php
 sudo mkdir /var/www/$domaine
@@ -72,8 +72,8 @@ sudo cp -a /tmp/wordpress/. /var/www/$domaine
 sudo chown -R $i:www-data /var/www/$domaine
 sudo find /var/www/$domaine -type d -exec chmod g+s {} \;
 sudo chmod g+w /var/www/$domaine/wp-content
-sudo chmod -R g+w /var/$domine/html/wp-content/themes
-sudo chmod -R g+w /var/$domaine/html/wp-content/plugins
+sudo chmod -R g+w /var/www/$domine/wp-content/themes
+sudo chmod -R g+w /var/www/$domaine/wp-content/plugins
 
 
 
