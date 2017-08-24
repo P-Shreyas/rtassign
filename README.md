@@ -1,5 +1,5 @@
 # rtassign
-<h2>Bash Script for Web Server Setup for WordPress on ubuntu<h2>
+<h2>Bash Script for Web Server Setup for WordPress on ubuntu</h2>
 
 <B>Usage:</B>
 <br>
