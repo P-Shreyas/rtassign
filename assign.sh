@@ -60,8 +60,8 @@ cd /tmp
 curl -O https://wordpress.org/latest.tar.gz
 tar xzvf latest.tar.gz >> log
 cp /tmp/wordpress/wp-config-sample.php /tmp/wordpress/wp-config.php
-
-sudo cp -a /tmp/wordpress/. /var/www/html
+sudo mkdir /var/www/$domaine
+sudo cp -a /tmp/wordpress/. /var/www/$domaine
 echo '###########################################4'
 
 
