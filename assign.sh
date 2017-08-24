@@ -2,16 +2,17 @@
 echo "Please wait while while all necessary components are being installed."
 echo "" > log
 rootp='root'
-sudo apt-get update
-sudo apt-get -y install nginx 
+sudo apt-get update >> log
+sudo apt-get -y install nginx >> log
+echo "nginx installation complete"
 export DEBIAN_FRONTEND=noninteractive
 sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
 sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
-sudo apt-get -y install mysql-server
+sudo apt-get -y install mysql-server >> log
 echo "Mysql installation complete"
-sudo apt-get -y install php-fpm php-mysql
-sudo apt-get install -y php-curl php-gd php-mbstring php-mcrypt php-xml php-xmlrpc
-
+sudo apt-get -y install php-fpm php-mysql >> log
+sudo apt-get install -y php-curl php-gd php-mbstring php-mcrypt php-xml php-xmlrpc >> log
+echo "php installation complete"
 
 i=$(whoami)
 ver=$(php -r "echo phpversion();")
@@ -31,8 +32,8 @@ sudo chown root /etc/hosts
 
 
 #mysql db
-mysql -u root -p$rootp < sql_input
-
+mysql -u root -p$rootp < sql_input >> log
+echo "database created"
 
 
 #create config
@@ -40,6 +41,7 @@ mysql -u root -p$rootp < sql_input
 
 sudo cp ngconf /etc/nginx/sites-available/$domaine
 sudo sed -i "s/domain_name/$domaine/g" /etc/nginx/sites-available/$domaine
+sudo sed -i "s/7.0/$ver/g" /etc/nginx/sites-available/$domaine
 sudo ln -s /etc/nginx/sites-available/$domaine /etc/nginx/sites-enabled/
 
 	
@@ -58,6 +60,7 @@ sudo systemctl restart php*
 #get wordpress
 cd /tmp
 curl -O https://wordpress.org/latest.tar.gz
+echo "getting wordpress"
 tar xzvf latest.tar.gz >> log
 cp /tmp/wordpress/wp-config-sample.php /tmp/wordpress/wp-config.php
 sudo mkdir /var/www/$domaine
@@ -80,6 +83,8 @@ cd /var/www/$domaine
 	sed -i "s/username_here/wordpressuser/g" wp-config.php
 	sed -i "s/password_here/password/g" wp-config.php
 	
-	
-echo "proceed to $domaine on your browser"	
-	
+
+echo "dbname: wordpress"
+echo "username: wordpressuser"
+echo "password: password"
+echo "proceed to $domaine on your browser"
