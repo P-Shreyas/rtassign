@@ -75,7 +75,7 @@ echo '###########################################5'
 
 
 #modify wpconfig
-cd /var/www/html
+cd /var/www/$domaine
 	sed -i "s/database_name_here/wordpress/g" wp-config.php
 	sed -i "s/username_here/wordpressuser/g" wp-config.php
 	sed -i "s/password_here/password/g" wp-config.php
