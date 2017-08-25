@@ -14,7 +14,10 @@ git clone https://github.com/P-Shreyas/rtassign.git
 <code>
 sudo rtassign/assign.sh
 </code>
-<br>
+
 <br>
 <b>Assumptions</b>
-
+<ol>
+<li>The script must be run by a sudo user.
+<li>I have tested this script on a vm running ubuntu 16.04
+</ol>
