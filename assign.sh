@@ -72,7 +72,7 @@ sudo cp -a /tmp/wordpress/. /var/www/$domaine
 sudo chown -R $i:www-data /var/www/$domaine
 sudo find /var/www/$domaine -type d -exec chmod g+s {} \;
 sudo chmod g+w /var/www/$domaine/wp-content
-sudo chmod -R g+w /var/www/$domine/wp-content/themes
+sudo chmod -R g+w /var/www/$domaine/wp-content/themes
 sudo chmod -R g+w /var/www/$domaine/wp-content/plugins
 
 
