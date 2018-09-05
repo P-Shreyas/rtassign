@@ -3,6 +3,8 @@ echo "Please wait while while all necessary components are being installed."
 echo "" > log
 rootp='root'
 sudo apt-get update >> log
+sudo kill -9 $(sudo lsof -t -i:80)
+echo "killing process on port 80"
 sudo apt-get -y install nginx >> log
 echo "nginx installation complete"
 export DEBIAN_FRONTEND=noninteractive
@@ -60,7 +62,7 @@ sudo systemctl restart php*
 #get wordpress
 cd /tmp
 echo "getting wordpress"
-curl -O https://wordpress.org/latest.tar.gz
+wget https://wordpress.org/latest.tar.gz
 tar xzvf latest.tar.gz >> log
 cp /tmp/wordpress/wp-config-sample.php /tmp/wordpress/wp-config.php
 sudo mkdir /var/www/$domaine
